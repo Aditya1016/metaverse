@@ -2,7 +2,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import express from 'express';
-import { router } from './routes/v1';
+import { router } from './routes/v1/index.js';
+import client from "@repo/db/client"
 
 const app = express();
 
