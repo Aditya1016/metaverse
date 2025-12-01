@@ -8,6 +8,7 @@ import {
 } from "../../types/index.js";
 import { prisma } from "@repo/db";
 export const adminRouter = Router();
+
 adminRouter.use(adminMiddleware);
 
 adminRouter.post("/element", async (req, res) => {
@@ -91,8 +92,8 @@ adminRouter.post("/map", async (req, res) => {
         thumbnail: parsedData.data.thumbnail,
         mapElements: {
           create: parsedData.data.defaultElements.map(
-            (e: { elementId: string; x: Number; y: Number }) => ({
-              elementId: e.elementId,
+            (e: { elementId: string; x: number; y: number }) => ({
+              element: { connect: { id: e.elementId } },
               x: e.x,
               y: e.y,
             })
