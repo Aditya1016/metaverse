@@ -10,13 +10,13 @@ declare global {
 }
 
 const SignUpSchema = z.object({
-  username: z.string().email(),
+  username: z.string(),
   password: z.string().min(6),
   type: z.enum(["user", "admin"]),
 });
 
 const SignInSchema = z.object({
-  username: z.string().email(),
+  username: z.string(),
   password: z.string().min(6),
 });
 
@@ -27,7 +27,7 @@ const UpdateMetadataSchema = z.object({
 const CreateSpaceSchema = z.object({
   name: z.string(),
   dimensions: z.string().regex(/^[0-9]{1,4}x[0-9]{1,4}$/),
-  mapId: z.string(),
+  mapId: z.string().optional(),
 });
 
 export const DeleteElementSchema = z.object({

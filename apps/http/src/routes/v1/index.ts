@@ -110,7 +110,7 @@ router.get("/avatars", async (req, res) => {
     const avatars = await prisma.avatar.findMany();
     return res.status(200).json({
       avatars: avatars.map(
-        (x: { id: string; imageUrl: string; name: string }) => ({
+        (x: (any)) => ({
           id: x.id,
           imageUrl: x.imageUrl,
           name: x.name,
